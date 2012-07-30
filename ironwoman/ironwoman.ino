@@ -160,19 +160,22 @@ void loop() {
 
   if (justpressed) {
     justpressed = 0;
-   String randNumber = String(random(1, 9));
-   Serial.println();
-   
-   String fileName = randNumber + ".WAV";
-   
-   Serial.println(fileName);
-   char charArray[6];
-   fileName.toCharArray(charArray, 6);
-   playfile(charArray);
-    while (wave.isplaying && pressed) {
-      //Serial.print(".");
-    }
-    wave.stop();    
+    while (pressed)
+    { 
+       String randNumber = String(random(1, 16));
+       Serial.println();
+       
+       String fileName = randNumber + ".WAV";
+       
+       Serial.println(fileName);
+       char charArray[7];
+       fileName.toCharArray(charArray, 7);
+       playfile(charArray);
+        while (wave.isplaying && pressed) {
+          //Serial.print(".");
+        }
+        wave.stop();
+    }    
   }
 }
 
